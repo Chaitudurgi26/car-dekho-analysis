@@ -1,0 +1,33 @@
+#Importing all the libraries using
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd 
+import seaborn as sns
+def load_car_data(file_path: str) -> pd.DataFrame:
+    """
+    Load car data from a CSV file.
+    
+    Args:
+        file_path (str): Path to the CSV file containing car data.
+        
+    Returns:
+        pd.DataFrame: DataFrame containing the loaded car data.
+    """
+    # Fix the raw string literal syntax and use forward slashes for path compatibility
+    file_path_fixed = r"C:\Users\krish\Downloads\car_Dekho_DA.csv"
+    
+    # Load the data
+    car_data = pd.read_csv(file_path_fixed)
+    
+    return car_data
+
+# Load the car data and display the first few rows
+car_data = load_car_data(r"C:\Users\krish\Downloads\car_Dekho_DA.csv")
+car_data.head()
+car_data.describe()
+car_data.info()
+car_data.isnull().sum()
+print(car_data.Car_Name.value_counts())
+plt.pie(car_data.Fuel_Type.value_counts(),labels=["Petrol","Diesel","CNG"],shadow=["Red","Green","Blue"])
+plt.show()
+car_data.Fuel_Type.value_counts().plot.bar()
